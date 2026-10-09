@@ -1,0 +1,8 @@
+# Store and check out text files with LF everywhere, so Prettier and CI agree on every OS.
+* text=auto eol=lf
+
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.webp binary
+*.ico binary
