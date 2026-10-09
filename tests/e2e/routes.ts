@@ -1,0 +1,17 @@
+export const routes = [
+  "/",
+  "/residential-services",
+  "/commercial-services",
+  "/services",
+  "/services/dumpster",
+  "/services/portable-toilets",
+  "/services/restroom-trailers",
+  "/services/shower-trailers",
+  "/services/septic",
+  "/services/commercial-waste-management",
+  "/about-us",
+  "/careers",
+  "/contact",
+  "/privacy-policy",
+  "/terms",
+];

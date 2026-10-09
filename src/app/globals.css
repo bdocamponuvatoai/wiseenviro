@@ -1,26 +1,411 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: oklch(97.8% 0.008 119);
+  --foreground: oklch(18.8% 0.034 248);
+  --surface: oklch(100% 0 0);
+  --surface-foreground: oklch(18.8% 0.034 248);
+  --muted: oklch(94.7% 0.012 125);
+  --muted-foreground: oklch(43% 0.025 242);
+  --primary: oklch(82% 0.197 126);
+  --primary-hover: oklch(76% 0.19 126);
+  --primary-foreground: oklch(18.8% 0.034 248);
+  --secondary: oklch(31% 0.083 248);
+  --secondary-hover: oklch(24% 0.061 248);
+  --secondary-foreground: oklch(100% 0 0);
+  --accent: oklch(82% 0.197 126);
+  --accent-hover: oklch(76% 0.19 126);
+  --accent-foreground: oklch(18.8% 0.034 248);
+  --highlight: oklch(82% 0.197 126);
+  --highlight-foreground: oklch(18.8% 0.034 248);
+  --band: oklch(94.7% 0.012 125);
+  --band-foreground: oklch(18.8% 0.034 248);
+  --band-muted-foreground: oklch(43% 0.025 242);
+  --band-highlight: oklch(47% 0.13 137);
+  --band-rule: oklch(82% 0.197 126);
+  --link: oklch(36% 0.106 248);
+  --border: oklch(85% 0.018 125);
+  --input: oklch(56% 0.03 241);
+  --ring: oklch(39% 0.11 248);
+  --success: oklch(47% 0.13 138);
+  --success-foreground: oklch(100% 0 0);
+  --warning: oklch(78.5% 0.164 77.6);
+  --warning-foreground: oklch(18.8% 0.034 248);
+  --danger: oklch(48.2% 0.189 23.4);
+  --danger-foreground: oklch(100% 0 0);
+  /* Text and overlays placed directly on photography */
+  --on-media: oklch(100% 0 0);
+  --scrim: oklch(0% 0 0);
+  color-scheme: light;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-surface: var(--surface);
+  --color-surface-foreground: var(--surface-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-hover: var(--secondary-hover);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-highlight: var(--highlight);
+  --color-highlight-foreground: var(--highlight-foreground);
+  --color-band: var(--band);
+  --color-band-foreground: var(--band-foreground);
+  --color-band-muted-foreground: var(--band-muted-foreground);
+  --color-band-highlight: var(--band-highlight);
+  --color-band-rule: var(--band-rule);
+  --color-link: var(--link);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-danger: var(--danger);
+  --color-danger-foreground: var(--danger-foreground);
+  --color-paper: oklch(100% 0 0);
+  --color-on-media: var(--on-media);
+  --color-scrim: var(--scrim);
+  --font-sans: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-syne), var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@theme {
+  --text-display: clamp(2.45rem, 1.55rem + 6.1vw, 6.4rem);
+  --text-display--line-height: 0.94;
+  --text-h1: clamp(2.2rem, 1.5rem + 4.3vw, 5.4rem);
+  --text-h1--line-height: 0.96;
+  --text-h2: clamp(1.9rem, 1.35rem + 2vw, 4.5rem);
+  --text-h2--line-height: 1;
+  --text-h3: clamp(1.4rem, 1.15rem + 0.9vw, 2rem);
+  --text-h3--line-height: 1.15;
+  --text-lead: clamp(1.0625rem, 1rem + 0.4vw, 1.3rem);
+  --text-lead--line-height: 1.6;
+  --radius-sm: 0.35rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1.25rem;
+  --radius-xl: 2rem;
+  --shadow-card: 0 18px 40px -28px rgb(8 24 37 / 0.34);
+  --shadow-lift: 0 30px 70px -32px rgb(8 24 37 / 0.42);
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --duration-fast: 180ms;
+  --duration-base: 320ms;
+  --duration-slow: 700ms;
+  --container-content: 86rem;
+  --container-prose: 68ch;
+}
+
+@keyframes sheet-in {
+  from {
+    transform: translateY(-100%);
+  }
+}
+@keyframes reveal {
+  from {
+    translate: 0 3rem;
+  }
+}
+@keyframes reading-progress {
+  from {
+    scale: 0 1;
+  }
+  to {
+    scale: 1 1;
+  }
+}
+@keyframes process-step-in {
+  from {
+    opacity: 0;
+    translate: 0 2.25rem;
+    scale: 0.985;
+  }
+}
+@keyframes process-image-in {
+  from {
+    opacity: 0.72;
+    transform: perspective(1200px) rotateY(-2.5deg) translateY(1.5rem);
+  }
+}
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+@keyframes arrow-hop {
+  49% {
+    translate: 125% 0;
+  }
+  50% {
+    translate: -125% 0;
+  }
+}
+@keyframes back-to-top-in {
+  from {
+    translate: 0 6rem;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    overflow-x: clip;
+    scroll-behavior: smooth;
+    scrollbar-gutter: stable;
+  }
+
+  body {
+    overflow-x: clip;
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    font-size: 1.0625rem;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body::before {
+    position: fixed;
+    inset: 0 0 auto;
+    z-index: 100;
+    height: 3px;
+    background: var(--color-primary);
+    content: "";
+    transform-origin: left;
+    animation: reading-progress linear both;
+    animation-timeline: scroll(root);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    overflow-wrap: normal;
+    word-break: normal;
+    text-wrap: balance;
+  }
+
+  main :where(.grid) > * {
+    min-width: 0;
+  }
+
+  p,
+  li {
+    text-wrap: pretty;
+  }
+  :focus-visible {
+    outline: 3px solid var(--color-ring);
+    outline-offset: 3px;
+  }
+  ::selection {
+    background-color: var(--color-highlight);
+    color: var(--color-highlight-foreground);
+  }
+  a,
+  button,
+  summary {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+@layer components {
+  .photo-frame {
+    position: relative;
+    overflow: clip;
+    border-radius: var(--radius-xl);
+    box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--color-foreground) 10%, transparent);
+  }
+  .photo-frame::after {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--color-on-media) 18%, transparent);
+    content: "";
+  }
+  .eyebrow-line {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+  }
+  .eyebrow-line::before {
+    width: 2.75rem;
+    height: 1px;
+    background: currentColor;
+    content: "";
+  }
+  .arrow-hop {
+    overflow: hidden;
+  }
+  .text-shadow-hero {
+    text-shadow: 0 3px 24px color-mix(in oklab, var(--color-scrim) 55%, transparent);
+  }
+  .hero-copy-glass {
+    text-shadow: 0 2px 12px color-mix(in oklab, var(--color-scrim) 72%, transparent);
+  }
+  .process-visual {
+    transform-origin: left center;
+  }
+  .process-step {
+    transition:
+      translate 320ms var(--ease-standard),
+      box-shadow 320ms var(--ease-standard),
+      border-color 320ms var(--ease-standard);
+  }
+  @media (min-width: 1024px) {
+    .hero-copy-glass {
+      margin: -1rem;
+      padding: 1.25rem 1rem 1rem;
+      border-radius: 0 0 1rem 1rem;
+      background: color-mix(in oklab, var(--color-scrim) 20%, transparent);
+      backdrop-filter: blur(5px);
+    }
+  }
+  /* Dark photo areas: switch the focus ring to lime so it stays visible. */
+  .on-media {
+    --color-ring: var(--color-primary);
+  }
+  .marquee-track {
+    display: flex;
+    width: max-content;
+  }
+  .back-to-top {
+    animation: back-to-top-in linear both;
+    animation-timeline: scroll(root);
+    animation-range: 85vh 110vh;
+  }
+  /* Never leave a keyboard-focused control off-screen. */
+  .back-to-top:focus-visible {
+    animation: none;
+  }
+
+  .services-rail {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .service-panel {
+    min-width: 0;
+  }
+
+  .service-panel-title {
+    overflow-wrap: normal;
+    word-break: keep-all;
+  }
+}
+
+@media (min-width: 1024px) {
+  .services-rail {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  .service-panel {
+    min-height: 30rem;
+    transition:
+      translate 450ms var(--ease-standard),
+      box-shadow 450ms var(--ease-standard);
+  }
+
+  .service-panel-title {
+    font-size: clamp(1.65rem, 2vw, 2.6rem);
+  }
+}
+
+@media (min-width: 1280px) {
+  .services-rail {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+  }
+
+  .service-panel:first-child {
+    grid-column: span 6;
+  }
+
+  .service-panel:nth-child(2),
+  .service-panel:nth-child(3) {
+    grid-column: span 3;
+  }
+
+  .service-panel:nth-child(n + 4) {
+    grid-column: span 4;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .marquee-track {
+    animation: marquee 24s linear infinite;
+  }
+  .marquee-track:hover {
+    animation-play-state: paused;
+  }
+
+  :is(a, button):hover .arrow-hop,
+  :is(a, button):focus-visible .arrow-hop {
+    animation: arrow-hop 500ms var(--ease-standard);
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .interactive-card:hover {
+      translate: 0 -0.35rem;
+    }
+    .interactive-card:hover img {
+      scale: 1.035;
+    }
+    .process-step:hover {
+      translate: 0 -0.3rem;
+      border-color: color-mix(in oklab, var(--color-primary) 58%, transparent);
+      box-shadow: var(--shadow-lift);
+    }
+  }
+
+  @supports (animation-timeline: view()) {
+    .reveal {
+      animation: reveal linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 48%;
+    }
+    .process-step {
+      animation: process-step-in linear both;
+      animation-timeline: view();
+      animation-range: entry 5% entry 45%;
+    }
+    .process-visual {
+      animation: process-image-in linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 38%;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .marquee-track {
+    animation-duration: 18s;
+  }
 }

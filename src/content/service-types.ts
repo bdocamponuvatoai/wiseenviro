@@ -1,0 +1,23 @@
+/** Service types offered on the contact form, mirroring the current site's list. */
+export const requestableServices = [
+  "Dumpster Services (Roll-Off, Front Load)",
+  "H2O Services",
+  "Portable Restrooms",
+  "ADA Restrooms",
+  "VIP Restroom Trailer",
+  "Shower Trailer",
+  "Laundry Trailer",
+  "Office Trailers",
+  "Holding Tanks",
+  "Septic Services",
+  "Tents",
+  "Portable 3-Compartment Sink / Temporary Kitchen",
+  "RV Services",
+  "Industrial Vacuuming",
+  "Special Waste, Testing & Disposal",
+  "Tire Disposal",
+  "Recycling",
+  "Sewer Line Location",
+  "Sewer Line Camera Services",
+  "Other",
+] as const;
